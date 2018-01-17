@@ -1,0 +1,216 @@
+html {
+    height: 100%;
+}
+body {
+    margin: 0;
+    height: 100%;
+    background-image: url("https://raw.githubusercontent.com/kko13/OdomRacing/master/resources/Parallax_BG_Opt3.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    font-family: serif;
+}
+h1{
+    font-family: ewert;
+    font-size: 8em;
+    margin-top: 2px;
+    margin-bottom: -1%;
+    color: rgba(255,255,255,1);
+    text-align: center;
+}
+h2{
+    font-family: ewert, serif;
+    font-size: 1.5em;
+    color: rgba(255,255,255,1);
+    text-align: center;
+}
+h3{
+    font-family: ewert, serif;
+    font-size: 1.25em;
+    color: rgba(255,255,255,1);
+    text-align: center;
+}
+p{
+    color: rgba(255,255,255,1);
+}
+img{
+    color: rgba(255,255,255,1);
+}
+footer{
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,1);
+}
+
+/* Top-Bar Styling */
+.top_bar{
+    position: fixed;
+    background-color: rgba(0,0,0,1);
+    width: 100%;
+    box-sizing: content-box;
+    z-index: 99;
+}
+.tb_header{
+    position: relative;
+    box-sizing: border-box;
+}
+.tb_navbar{
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    z-index: 99;
+}
+.tb_h1{
+    overflow: none;
+}
+.tb_a{
+    color: rgba(255,255,255,1);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 24%;
+    font-size: 1.25em;
+}
+.tb_a:hover{
+    color: rgba(0,0,255,1);
+    background-color: rgba(255,255,255,1);
+    text-decoration: blink;
+}
+
+/* Main Logo Styling */
+.main_logo img{
+    box-sizing: content-box;
+    display: block;
+    max-height: 600px;
+    max-width: 600px;
+    height: 50%;
+    width: 50%;
+    padding: 15%;
+    margin: auto;
+    border-radius: 50%;
+}
+
+/* Parrallax Inner Styling
+    - OffsetDivs to fix TopBar navigation bug
+    - Caused by fixed height of TopBar element */
+.parallax_main{
+    height: 100%;
+}
+.offset_div{
+    height: 5%;
+}
+.inner_div{
+    margin: 0 5%;
+    height: 80%;
+    padding: 5% 10%;
+    background: rgba(0, 0, 0, 0.6);
+    box-sizing: content-box;
+}
+
+/* Slideshow styling */
+.slideshow_div {
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+.slides {
+    display: none;
+}
+.slides img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+}
+.first_slide {
+    display: block;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.slide_fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+.foot_elems a{
+    color: rgba(255,255,255,1);
+    text-decoration: none;
+}
+
+/* To-Top button styling */
+.top_btn{
+    font-family: ewert;
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+    z-index: 99;
+    border: none;
+    background-color: rgba(255,255,255,1);
+    color: rgba(0,0,0,1);
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+}
+.top_btn:hover{
+    background-color: rgba(0,0,0,1);
+    color: rgba(255,255,255,1);
+
+}
+
+/* Scroll-Bar Styling */
+::-webkit-scrollbar{
+    display: none;
+}
+
+/* Media queries - detect screen sizes */
+@media screen and (max-width: 1050px) and (min-width: 450px) {
+    .main_logo img {
+        padding: 25%;
+    }
+    h1 {
+        font-size: 4em;
+    }
+}
+@media screen and (max-width: 449px) and (min-width: 0) {
+    .main_logo img {
+        padding: 20%;
+    }
+    h1 {
+        font-size: 2em;
+    }
+}
