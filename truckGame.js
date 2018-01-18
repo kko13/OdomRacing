@@ -93,10 +93,7 @@ var update = function (time_modifier) {
 
     // Check end game conditions
     if (
-        truck.x <= (obsticle.x + obsticle.width)
-        && obsticle.x <= (truck.x + truck.width)
-        && truck.y <= (obsticle.y + obsticle.height)
-        && obsticle <= (truck.y + truck.height)
+        false
     ) {
         running = false;
     }
@@ -124,7 +121,7 @@ var render = function () {
 var gameover = function() {
     context.textAlign = "center";
     context.textBaseline = "center";
-    context.fillText("GAME OVER\n Score: " + obsticles_dodged);
+    context.fillText("GAME OVER\n Score: " + obsticles_dodged, 64, 64);
 };
 
 // Main game looped via requestAnimationFrame()
@@ -132,18 +129,16 @@ var main = function () {
     var now = Date.now();
     var delta_time = now - then;
 
-    while (running == true) {
+    if (running == true) {
         update(delta_time / 1000);
         render();
     }
-
-
-
-    gameover();
-
+    else {
+        gameover();
+    }
     then = now;
 
-    // requestAnimationFrame(main);
+    requestAnimationFrame(main);
 };
 
 var w = window;
