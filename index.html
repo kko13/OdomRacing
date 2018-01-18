@@ -1,20 +1,23 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Ewert" rel="stylesheet">
-        <link rel="shortcut icon" href="https://raw.githubusercontent.com/kko13/OdomRacing/master/resources/favicon.ico">
-        <link type="text/css" href="css/style.css"/>
-        <script src="js/main_page.js"></script>
-        <title>Odom Racing</title>
-    </head>
-    <body>
-        <div class="top_bar">
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="MyJSMain.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Ewert' rel='stylesheet'>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="shortcut icon" href="resources/favicon.ico">
+    <title>Odom Racing</title>
+</head>
+
+<body>
+    <div class="top_bar">
         <div id="MainHeader" class="tb_header">
             <h1 class="tb_h1">ODOM RACING</h1>
         </div>
+
         <div id="MainNav" class="tb_navbar">
             <a class="tb_a" href="#OffsetDiv1">About</a>
             <a class="tb_a" href="#OffsetDiv2">Action</a>
@@ -22,35 +25,43 @@
             <a class="tb_a" href="http://allaboutdirt.net">Track</a>
         </div>
     </div>
+
     <div id="MainLogo" class="main_logo">
-        <img src="https://raw.githubusercontent.com/kko13/OdomRacing/master/resources/ORLogo_Circle_Usable.jpg" alt="Odom Racing Logo">
+        <img src="resources/ORLogo_Circle_Usable.jpg" alt="Odom Racing Logo">
     </div>
+
     <div id="ParallaxMain" class="parallax_main">
         <div id="OffsetDiv1" class="offset_div"></div>
         <div id="InnerDiv1" class="inner_div">
             <h2>About</h2>
-
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non semper tortor. Nunc sodales metus massa. Proin pharetra erat at lectus finibus suscipit. Duis massa velit, fermentum eu hendrerit in, lacinia et est. Mauris hendrerit dolor a lectus dictum dictum. Vestibulum venenatis elit ac lacus pulvinar, sit amet mattis ante rhoncus. Maecenas arcu mi, bibendum eget pharetra a, blandit ac leo. Donec iaculis metus sit amet ex efficitur pulvinar. Donec dapibus blandit laoreet. Phasellus gravida gravida auctor.</p>
+            <p>Morbi quis dui tincidunt, venenatis ante a, euismod sapien. Pellentesque eu purus fringilla, convallis leo at, lobortis justo. Aliquam vitae nibh nec velit tincidunt iaculis in a ipsum. Donec iaculis ullamcorper augue, in posuere augue suscipit quis. Vivamus neque ligula, tristique eu sagittis sed, commodo nec tellus. Pellentesque vel lorem feugiat, commodo nunc placerat, varius mi. Nunc egestas nibh massa, non tristique mauris iaculis malesuada.</p>
         </div>
+
         <div id="OffsetDiv2" class="offset_div"></div>
         <div id="InnerDiv2" class="inner_div">
             <h2>Slideshow</h2>
             <div class="slideshow_div">
                 <div class="slides slide_fade first_slide">
-                    <img src="https://raw.githubusercontent.com/kko13/OdomRacing/master/resources/Parallax_BG_Opt1.jpg">
+                    <img src="resources/Parallax_BG_Opt1.jpg">
                 </div>
                 <div class="slides slide_fade">
-                    <img src="https://raw.githubusercontent.com/kko13/OdomRacing/master/resources/Parallax_BG_Opt2.jpg">
+                    <img src="resources/Parallax_BG_Opt2.jpg">
                 </div>
                 <a class="prev" onclick="slideCount(-1)">&#10094;</a>
                 <a class="next" onclick="slideCount(1)">&#10095;</a>
             </div>
         </div>
-        <footer id="MainFooter" class="foot_bar">
-            <h3 class="foot_elems">Footer</h3>
-            <a class="foot_elems" href="#">Contact Us!</a>
+
+        <footer class="foot_bar">
+            <div id="MainFooter" class="foot_elems">
+                <h3>Footer</h3>
+                <a href="#">Contact Us!</a>
+            </div>
         </footer>
+
+        <button onclick="toTopFunction()" id="TopBtn" class="top_btn" title="Go to top">Top</button>
     </div>
-    <button onclick="toTopFunction()" id="TopBtn" class="top_btn" title="Go to top">Top</button>
-    </body>
+    <script src="MyJSBody.js"></script>
+</body>
 </html>
