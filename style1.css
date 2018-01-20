@@ -200,18 +200,14 @@ footer{
     display: none;
 }
 
-/* Media queries - detect screen sizes */
-@media screen and (max-width: 1050px) and (min-width: 450px) {
-    .main_logo img {
-        padding: 25%;
-    }
-    h1 {
-        font-size: 4em;
-    }
-}
-@media screen and (max-width: 449px) and (min-width: 0) {
+
+@media screen and (max-width: 1050px) and (min-width: 0) {
     .main_logo img {
         padding: 20%;
+    }
+    .tb_a {
+        font-size: 1em;
+        width: 18%;
     }
     h1 {
         font-size: 2em;

@@ -2,7 +2,7 @@
 var canvas = document.createElement("canvas");
 var context = canvas.getContext("2d");
 canvas.width = 1024;
-canvas.height = 768;
+canvas.height = 1024;
 document.body.appendChild(canvas);
 
 // Initialize background image
@@ -21,13 +21,13 @@ truckImg.onload = function () {
 };
 truckImg.src = "images/truck.png";
 
-// Initialize obsticle image
-var obsticleIsReady = false;
-var obsticleImg = new Image();
-obsticleImg.onload = function () {
-    obsticleIsReady = true;
+// Initialize obstacle image
+var obstacleIsReady = false;
+var obstacleImg = new Image();
+obstacleImg.onload = function () {
+    obstacleIsReady = true;
 };
-obsticleImg.src = "images/brick.png";
+obstacleImg.src = "images/brick.png";
 
 // Initialize game objects
 var truck = {
@@ -35,16 +35,18 @@ var truck = {
     height: 256,
     speed: 256,
     x: 0,
-    y: 0
+    y: 0,
+    lane: 0
 };
-var obsticle = {
+var obstacle = {
     width: 256,
     height: 256,
     speed: 256,
     x: 1024,
-    y: 0
+    y: 0,
+    lane: 0
 };
-var obsticles_dodged = 0;
+var obstacles_dodged = 0;
 var running = false;
 
 // Handle keyboard controls
@@ -60,8 +62,9 @@ addEventListener("keyup", function (e) {
 
 // Initialize game
 var init = function () {
-    obsticle.x = canvas.width;
-    obsticle.y = Math.floor((Math.random() * 10) % 4) * 256;
+    obstacle.x = canvas.width;
+    obstacle.lane = Math.floor((Math.random() * 10) % 4)
+    obstacle.y = obstacle.lane * 256;
     running = true;
 };
 
@@ -69,32 +72,36 @@ var init = function () {
 var update = function (time_modifier) {
     // Update truck position
     if (38 in keysDown) {           // Up
-        truck.y -= truck.speed * time_modifier;
+        if (truck.y >= 0 && truck.lane >= 0) {
+            truck.y -= truck.speed;
+            truck.lane -= 1;
+        }
     }
     if (40 in keysDown) {           // Down
-        truck.y += truck.speed * time_modifier;
+        if (truck.y <= 1024 && truck.lane <= 3) {
+            truck.y += truck.speed;
+            truck.lane += 1;
+        }
     }
-    if (37 in keysDown) {           // Left
-        truck.x -= truck.speed * time_modifier;
-    }
-    if (39 in keysDown) {           // Right
-        truck.x += truck.speed * time_modifier;
-    }
+    //if (37 in keysDown) {           // Left
+    //    truck.x -= truck.speed * time_modifier;
+    //}
+    //if (39 in keysDown) {           // Right
+    //    truck.x += truck.speed * time_modifier;
+    //}
 
-    // Update obsticle position
-    if (0 > obsticle.x + 200) {
-        obsticle.x = canvas.width;
-        obsticle.y = Math.floor((Math.random() * 10) % 4) * 256;
-        ++obsticles_dodged;
+    // Update obstacle position
+    if (0 > obstacle.x + obstacle.width) {
+        obstacle.x = canvas.width;
+        obstacle.y = Math.floor((Math.random() * 10) % 4) * 256;
+        ++obstacles_dodged;
     }
     else {
-        obsticle.x -= obsticle.speed * time_modifier;
+        obstacle.x -= obstacle.speed * time_modifier;
     }
 
     // Check end game conditions
-    if (
-        false
-    ) {
+    if ((truck.lane == obstacle.lane) && (obstacle.x < truck.width)) {
         running = false;
     }
 };
@@ -107,21 +114,21 @@ var render = function () {
     if (truckIsReady) {
         context.drawImage(truckImg, truck.x, truck.y);
     }
-    if (obsticleIsReady) {
-        context.drawImage(obsticleImg, obsticle.x, obsticle.y);
+    if (obstacleIsReady) {
+        context.drawImage(obstacleImg, obstacle.x, obstacle.y);
     }
 
     context.fillStyle = "rgb(255, 255, 255)";
     context.font = "24px Helvetica";
     context.textAlign = "left";
     context.textBaseline = "top";
-    context.fillText("Obsticles dodged: " + obsticles_dodged, 32, 32);
+    context.fillText("obstacles dodged: " + obstacles_dodged, 32, 32);
 };
 
 var gameover = function() {
     context.textAlign = "center";
     context.textBaseline = "center";
-    context.fillText("GAME OVER\n Score: " + obsticles_dodged, 64, 64);
+    context.fillText("GAME OVER\n Score: " + obstacles_dodged, 64, 64);
 };
 
 // Main game looped via requestAnimationFrame()
