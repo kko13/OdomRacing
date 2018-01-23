@@ -105,10 +105,15 @@ footer{
 }
 .inner_div{
     margin: 0 5%;
-    height: 80%;
     padding: 5% 10%;
     background: rgba(0, 0, 0, 0.6);
     box-sizing: border-box;
+}
+#innerDiv1{
+    height: 70%;
+}
+#innerDiv2{
+    height: 130%;
 }
 
 /* Slideshow styling */
@@ -118,15 +123,17 @@ footer{
     position: relative;
     margin: auto;
     overflow: hidden;
+    box-sizing: content-box;
 }
 .slides {
     display: none;
 }
 .slides img {
-    width: auto;
-    max-width: 100%;
+    box-sizing: border-box;
     height: auto;
+    width: auto;
 }
+
 .first_slide {
     display: block;
 }
@@ -201,7 +208,7 @@ footer{
 }
 
 
-@media screen and (max-width: 1050px) and (min-width: 0) {
+@media screen and (max-width: 1050px) {
     .main_logo img {
         padding: 20%;
     }
