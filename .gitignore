@@ -1,2 +1,2 @@
-*.vscode
-*.eslintrc.js
+.DS_Store
+.idea
